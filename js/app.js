@@ -63,7 +63,7 @@ $("form").on('submit',function(event){
   if (search.length<1){
     //TODO return toast to enter a search term.
   }
-  console.log(search);
+  movies = [];
   getMovies(search);
 });
 
@@ -74,9 +74,12 @@ $.ajax({
   type: 'get',
   success: function(response){
     console.log(response);
+    var $movieData = response;
+    movies.push(response);
+    console.log(movies);
+    renderMovies(movies);
   }
-})
-
+});
 
 
 
