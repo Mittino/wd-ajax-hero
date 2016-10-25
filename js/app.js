@@ -57,4 +57,29 @@
   };
 
   // ADD YOUR CODE HERE
+$("form").on('submit',function(event){
+  event.preventDefault();
+  var search = $("#search").val();
+  if (search.length<1){
+    //TODO return toast to enter a search term.
+  }
+  console.log(search);
+  getMovies(search);
+});
+
+function getMovies(search){
+
+$.ajax({
+  url:'http://www.omdbapi.com/?t=' + search,
+  type: 'get',
+  success: function(response){
+    console.log(response);
+  }
+})
+
+
+
+
+}
+
 })();
