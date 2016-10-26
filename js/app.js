@@ -70,18 +70,23 @@ $("form").on('submit',function(event){
 function getMovies(search){
 
 $.ajax({
-  url:'http://www.omdbapi.com/?t=' + search,
+  url:'http://www.omdbapi.com/?s=' + search,
   type: 'get',
   success: function(response){
     console.log(response);
-    var $movieData = response;
-    movies.push(response);
-    console.log(movies);
+    console.log(response.Search[0].imdbID);
+
+    movies = response.Search.map(function(item){
+      return {
+        id: item.imdbID,
+        poster: item.Poster,
+        title: item.Title,
+        year: item.Year,
+      };
+    });
     renderMovies(movies);
   }
 });
-
-
 
 }
 
