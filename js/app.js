@@ -61,7 +61,7 @@ $("form").on('submit',function(event){
   event.preventDefault();
   var search = $("#search").val();
   if (search.length<1){
-    //TODO return toast to enter a search term.
+     Materialize.toast('Enter a title to search.', 4000)
   }
   movies = [];
   getMovies(search);
@@ -84,6 +84,9 @@ $.ajax({
         year: item.Year,
       };
     });
+
+  //  url: 'http://www.omdbapi.com/?i=' + tt2705436 + '&plot=short&r=json'
+
     renderMovies(movies);
   }
 });
